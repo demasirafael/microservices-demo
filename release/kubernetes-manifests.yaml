@@ -33,7 +33,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:*-v0.1
+        image: demasirafael/microservices-demo:paymentservice-v0.2
         ports:
         - containerPort: 50051
         env:
@@ -81,7 +81,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: demasirafael/microservices-demo:*-v0.1
+        image: redis:alpine
         ports:
         - containerPort: 6379
         readinessProbe:
@@ -136,7 +136,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:*-v0.1
+        image: demasirafael/microservices-demo:emailservice-v0.2
         ports:
         - containerPort: 8080
         env:
@@ -193,7 +193,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: demasirafael/microservices-demo:*-v0.1
+          image: demasirafael/microservices-demo:frontend-v0.2
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -287,7 +287,7 @@ spec:
       serviceAccountName: default
       containers:
       - name: server
-        image: demasirafael/microservices-demo:*-v0.1
+        image: demasirafael/microservices-demo:shippingservice-v0.2
         ports:
         - containerPort: 50051
         env:
@@ -333,10 +333,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: adservice
-labels:
-  tags.datadoghq.com/env: "demo"
-  tags.datadoghq.com/service: "adservice-onlineboutique"
-  tags.datadoghq.com/version: "1.0"
+  labels:
+    tags.datadoghq.com/env: "demo"
+    tags.datadoghq.com/service: "adservice-onlineboutique"
+    tags.datadoghq.com/version: "0.1"
 spec:
   selector:
     matchLabels:
@@ -350,7 +350,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:*-v0.1
+        image: demasirafael/microservices-demo:adservice-v0.2
         ports:
         - containerPort: 9555
         env:
@@ -413,7 +413,6 @@ spec:
   - name: grpc
     port: 9555
     targetPort: 9555
-    
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -432,7 +431,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:*-v0.1
+        image: demasirafael/microservices-demo:recommendationservice-v0.2
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -492,7 +491,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:*-v0.1
+        image: demasirafael/microservices-demo:currencyservice-v0.2
         ports:
         - name: grpc
           containerPort: 7000
@@ -553,7 +552,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: main
-        image: demasirafael/microservices-demo:*-v0.1
+        image: demasirafael/microservices-demo:loadgenerator-v0.2
         env:
         - name: FRONTEND_ADDR
           value: "frontend:80"
@@ -583,7 +582,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: demasirafael/microservices-demo:*-v0.1
+          image: demasirafael/microservices-demo:checkoutservice-v0.2
           ports:
           - containerPort: 5050
           readinessProbe:
@@ -653,7 +652,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:*-v0.1
+        image: demasirafael/microservices-demo:productcatalogservice-v0.2
         ports:
         - containerPort: 3550
         env:
@@ -711,7 +710,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:*-v0.1
+        image: demasirafael/microservices-demo:cartservice-v0.2
         ports:
         - containerPort: 7070
         env:
