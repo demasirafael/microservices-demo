@@ -36,7 +36,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:paymentservice-v1.4
+        image: demasirafael/microservices-demo:paymentservice-v1.5
         ports:
         - containerPort: 50051
         env:
@@ -155,7 +155,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:emailservice-v1.4
+        image: demasirafael/microservices-demo:emailservice-v1.5
         ports:
         - containerPort: 8080
         env:
@@ -212,7 +212,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: demasirafael/microservices-demo:frontend-v1.4
+          image: demasirafael/microservices-demo:frontend-v1.5
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -309,7 +309,7 @@ spec:
       serviceAccountName: default
       containers:
       - name: server
-        image: demasirafael/microservices-demo:shippingservice-v1.4
+        image: demasirafael/microservices-demo:shippingservice-v1.5
         ports:
         - containerPort: 50051
         env:
@@ -387,7 +387,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:adservice-v1.4
+        image: demasirafael/microservices-demo:adservice-v1.5
         ports:
         - containerPort: 9555
         env:
@@ -468,7 +468,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:recommendationservice-v1.4
+        image: demasirafael/microservices-demo:recommendationservice-v1.5
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -531,7 +531,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:currencyservice-v1.4
+        image: demasirafael/microservices-demo:currencyservice-v1.5
         ports:
         - name: grpc
           containerPort: 7000
@@ -608,7 +608,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: main
-        image: demasirafael/microservices-demo:loadgenerator-v1.4
+        image: demasirafael/microservices-demo:loadgenerator-v1.5
         env:
         - name: FRONTEND_ADDR
           value: "frontend:80"
@@ -638,7 +638,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: demasirafael/microservices-demo:checkoutservice-v1.4
+          image: demasirafael/microservices-demo:checkoutservice-v1.5
           ports:
           - containerPort: 5050
           readinessProbe:
@@ -708,7 +708,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:productcatalogservice-v1.4
+        image: demasirafael/microservices-demo:productcatalogservice-v1.5
         ports:
         - containerPort: 3550
         env:
@@ -766,7 +766,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:cartservice-v1.4
+        image: demasirafael/microservices-demo:cartservice-v1.5
         ports:
         - containerPort: 7070
         env:
