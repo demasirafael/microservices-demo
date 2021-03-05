@@ -36,7 +36,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:paymentservice-v1.3
+        image: demasirafael/microservices-demo:paymentservice-v1.4
         ports:
         - containerPort: 50051
         env:
@@ -155,7 +155,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:emailservice-v1.3
+        image: demasirafael/microservices-demo:emailservice-v1.4
         ports:
         - containerPort: 8080
         env:
@@ -212,7 +212,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: demasirafael/microservices-demo:frontend-v1.3
+          image: demasirafael/microservices-demo:frontend-v1.4
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -302,16 +302,35 @@ spec:
     metadata:
       labels:
         app: shippingservice
+        tags.datadoghq.com/env: "demo"
+        tags.datadoghq.com/service: "shippingservice-onlineboutique"
+        tags.datadoghq.com/version: "0.1"
     spec:
       serviceAccountName: default
       containers:
       - name: server
-        image: demasirafael/microservices-demo:shippingservice-v1.3
+        image: demasirafael/microservices-demo:shippingservice-v1.4
         ports:
         - containerPort: 50051
         env:
         - name: PORT
           value: "50051"
+        - name: DD_AGENT_HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: DD_ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/env']
+        - name: DD_SERVICE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/service']
+        - name: DD_VERSION
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/version']          
         # - name: DISABLE_STATS
         #   value: "1"
         # - name: DISABLE_TRACING
@@ -368,7 +387,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:adservice-v1.3
+        image: demasirafael/microservices-demo:adservice-v1.4
         ports:
         - containerPort: 9555
         env:
@@ -449,7 +468,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:recommendationservice-v1.3
+        image: demasirafael/microservices-demo:recommendationservice-v1.4
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -512,7 +531,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:currencyservice-v1.3
+        image: demasirafael/microservices-demo:currencyservice-v1.4
         ports:
         - name: grpc
           containerPort: 7000
@@ -589,7 +608,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: main
-        image: demasirafael/microservices-demo:loadgenerator-v1.3
+        image: demasirafael/microservices-demo:loadgenerator-v1.4
         env:
         - name: FRONTEND_ADDR
           value: "frontend:80"
@@ -619,7 +638,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: demasirafael/microservices-demo:checkoutservice-v1.3
+          image: demasirafael/microservices-demo:checkoutservice-v1.4
           ports:
           - containerPort: 5050
           readinessProbe:
@@ -689,7 +708,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:productcatalogservice-v1.3
+        image: demasirafael/microservices-demo:productcatalogservice-v1.4
         ports:
         - containerPort: 3550
         env:
@@ -747,7 +766,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: demasirafael/microservices-demo:cartservice-v1.3
+        image: demasirafael/microservices-demo:cartservice-v1.4
         ports:
         - containerPort: 7070
         env:
